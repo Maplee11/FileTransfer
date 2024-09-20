@@ -1,6 +1,7 @@
 import tkinter as tk
 import pyperclip
 import subprocess
+import os
 
 
 def get_device_ip():
@@ -16,8 +17,14 @@ def get_device_ip():
 
 def display_url(url):
     root = tk.Tk()
-    root.title("请在手机或其他设备的浏览器中打开此链接")
-    root.geometry("400x100")
+    root.title("文件传输")
+
+    url_label = tk.Label(root, text="关闭此窗口将会结束程序, 请等待文件传输完毕后再关闭此窗口", wraplength=800, justify="center")
+    url_label.pack(pady=10)
+
+    url_label = tk.Label(root, text="请在手机或其他设备的浏览器中打开此链接", wraplength=800, justify="center")
+    url_label.pack(pady=10)
+    root.geometry("400x200")
 
     url_label = tk.Label(root, text=url, wraplength=800, justify="center")
     url_label.pack(pady=10)
@@ -32,6 +39,9 @@ def main():
     port = 8861
     ip = get_device_ip()
     url = f"http://{ip}:{port}"
+
+    upload_directory = "D:\\GitClone"
+    os.chdir(upload_directory)
 
     http_server = subprocess.Popen(
         f"python -m http.server {port}",
