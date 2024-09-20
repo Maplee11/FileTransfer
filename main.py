@@ -17,7 +17,7 @@ def get_device_ip():
 
 def display_url(url):
     root = tk.Tk()
-    root.title("文件传输")
+    root.title("文件传输助手")
 
     url_label = tk.Label(root, text="关闭此窗口将会结束程序, 请等待文件传输完毕后再关闭此窗口", wraplength=800, justify="center")
     url_label.pack(pady=10)
